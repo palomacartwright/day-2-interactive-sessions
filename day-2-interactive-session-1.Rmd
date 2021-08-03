@@ -1,0 +1,13 @@
+---
+title: "Day 2 Interactive Session 1"
+author: "Paloma Cartwright"
+date: "03/08/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(usethis)
+library(tidyverse)
+```
+
