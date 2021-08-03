@@ -172,7 +172,65 @@ pre code {
 </div>
 
 
+<div id="derivatives-in-r" class="section level3">
+<h3>Derivatives in R</h3>
+<pre class="r"><code>fx &lt;- expression(x^2)
 
+df_dx &lt;- D(expr = fx, name = &#39;x&#39;)
+
+df_dx</code></pre>
+<pre><code>## 2 * x</code></pre>
+<pre class="r"><code>#Evaluate the slope of f(x) on a sequence
+
+x &lt;- 831
+
+eval(expr = df_dx)</code></pre>
+<pre><code>## [1] 1662</code></pre>
+<pre class="r"><code>gt &lt;- expression(3 * t ^ 2 - 4 * cos(t))
+
+dg_dt &lt;- D(expr = gt, name = &#39;t&#39;)
+
+dg_dt</code></pre>
+<pre><code>## 3 * (2 * t) + 4 * sin(t)</code></pre>
+<div id="here-are-my-examples" class="section level4">
+<h4>Here are my Examples</h4>
+<pre class="r"><code>pt &lt;- expression(exp(2 * t) - 4 * t ^ 2 + sin(t))
+
+dp_dt &lt;- D(expr = pt, name = &quot;t&quot;)
+
+dp_dt</code></pre>
+<pre><code>## exp(2 * t) * 2 - 4 * (2 * t) + cos(t)</code></pre>
+<pre class="r"><code>jy &lt;- expression(4 * y ^ 9 - 4 * log(y) + tan(y))
+
+dj_dy &lt;- D(expr = jy, name = &quot;y&quot;)
+
+dj_dy</code></pre>
+<pre><code>## 4 * (9 * y^8) - 4 * (1/y) + 1/cos(y)^2</code></pre>
+<pre class="r"><code>fx &lt;- expression((4 / (x ^ 7)) - (2 * x ^ 5) + x - 1)
+
+df_dx &lt;- D(expr = fx, name = &quot;x&quot;)
+
+df_dx</code></pre>
+<pre><code>## 1 - (4 * (7 * x^6)/(x^7)^2 + 2 * (5 * x^4))</code></pre>
+</div>
+</div>
+<div id="finding-the-derivate-over-a-sequence-of-xs" class="section level3">
+<h3>Finding the derivate over a sequence of xs</h3>
+<pre class="r"><code>fx &lt;- expression(x^2)
+
+df_dx &lt;- D(expr = fx, name = &#39;x&#39;)
+
+df_dx</code></pre>
+<pre><code>## 2 * x</code></pre>
+<pre class="r"><code>#Evaluate the slope of f(x) on a sequence
+
+x &lt;- seq(from = -10, to = 10, by = 0.5)
+
+eval(expr = df_dx)</code></pre>
+<pre><code>##  [1] -20 -19 -18 -17 -16 -15 -14 -13 -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2
+## [20]  -1   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+## [39]  18  19  20</code></pre>
+</div>
 
 
 

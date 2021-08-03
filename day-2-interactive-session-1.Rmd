@@ -11,3 +11,71 @@ library(usethis)
 library(tidyverse)
 ```
 
+### Derivatives in R 
+```{r}
+fx <- expression(x^2)
+
+df_dx <- D(expr = fx, name = 'x')
+
+df_dx
+
+#Evaluate the slope of f(x) on a sequence
+
+x <- 831
+
+eval(expr = df_dx)
+
+```
+
+```{r}
+gt <- expression(3 * t ^ 2 - 4 * cos(t))
+
+dg_dt <- D(expr = gt, name = 't')
+
+dg_dt
+```
+
+#### Here are my Examples 
+
+```{r}
+
+pt <- expression(exp(2 * t) - 4 * t ^ 2 + sin(t))
+
+dp_dt <- D(expr = pt, name = "t")
+
+dp_dt
+
+```
+```{r}
+
+jy <- expression(4 * y ^ 9 - 4 * log(y) + tan(y))
+
+dj_dy <- D(expr = jy, name = "y")
+
+dj_dy
+
+```
+```{r}
+fx <- expression((4 / (x ^ 7)) - (2 * x ^ 5) + x - 1)
+
+df_dx <- D(expr = fx, name = "x")
+
+df_dx
+```
+
+### Finding the derivate over a sequence of xs 
+
+```{r}
+fx <- expression(x^2)
+
+df_dx <- D(expr = fx, name = 'x')
+
+df_dx
+
+#Evaluate the slope of f(x) on a sequence
+
+x <- seq(from = -10, to = 10, by = 0.5)
+
+eval(expr = df_dx)
+
+```
