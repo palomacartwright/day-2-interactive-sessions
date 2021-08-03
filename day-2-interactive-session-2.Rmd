@@ -1,0 +1,106 @@
+---
+title: "Day 2 Interactive Session 2"
+author: "Paloma Cartwright"
+date: "03/08/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+### Plot a Function in `ggplot2`
+
+```{r}
+
+eq <- function(x){
+  
+  3 * x ^ 2 + 4
+  
+}
+
+# Use stat_function() to plot it over a specific range: 
+
+ggplot(data.frame(x = c(0, 100)), aes(x = x)) + 
+  stat_function(fun = eq)
+
+
+
+```
+
+#### Assigned Task 
+
+Plot $f(x) = 2.4 - 5x^3 + 2.1x^2$ over a range from -50 to 50 
+
+```{r}
+
+eqn <- function(x){
+  2.4 - 5 * x ^ 3 + 2.1 * x ^ 2
+}
+
+ggplot(data.frame(x = c(-50, 50)), aes(x = x)) + 
+  stat_function(fun = eqn)
+
+# Another option is to use the following lines. This may be a little off but this is the idea, setting the data frame to NULL.
+# ggplot(data.frame(NULL)) +
+#   stat_function(fun = eqn) +
+#   x_lim(min = 1, max = 100)
+```
+
+### Plot from the Penguins Data 
+
+##### Completing this using `penguins` body mass and flipper lengths 
+
+Make a basic `ggplot2` scatter plot of body mass (y) and flipper length (x)
+```{r} 
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c("red", "purple", "green"))+ 
+  labs(x = "Flipper Lengths (mm)", 
+       y = "Body Mass (g)", 
+       title = "Positive Correlation of Palmer Penguin Sizes", 
+       subtitle = "Data collected by KB Gornat et al. at Palmer Station", 
+       color = "Species"
+       ) +
+  # facet_wrap(~island) + (this made it look gross so I commented it out)
+  theme_minimal()
+
+```
+
+The warning message above the `ggplot` is just to let me know that there are two penguins somewhere in the data that have something missing, either of the data points. 
+
+### Higher Order Derivatives 
+
+```{r}
+gt <- expression( 2.2 + 3.1 * t - 5.6 * t ^ 4)
+
+dg_dt <- D(expr = gt, "t")
+
+dg_dt
+```
+
+```{r}
+d2g_dt2 <- D(expr = dg_dt, "t")
+
+d2g_dt2
+```
+
+### Partial Derivatives 
+
+```{r}
+
+f_xyz <- expression(2 * x * y - 3 * (x ^ 2) * (z^3) )
+
+df_dx <- D(expr = f_xyz, "x")
+df_dx
+
+df_dy <- D(expr = f_xyz, "y")
+df_dy
+
+df_dz <- D(expr = f_xyz, "z")
+df_dz
+```
+
